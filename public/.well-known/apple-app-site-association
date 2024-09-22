@@ -1,0 +1,30 @@
+{
+   "applinks": {
+     "details": [
+       {
+         "appIDs": [
+           "JEBPX7GX5C.net.robertdev.fadeflow"
+         ],
+         "paths": [
+            "*"
+         ],
+         "components": [
+           {
+             "/": "*",
+             "comment": "Matches all routes"
+           }
+         ]
+       }
+     ]
+   },
+   "activitycontinuation": {
+     "apps": [
+       "JEBPX7GX5C.net.robertdev.fadeflow"
+     ]
+   },
+   "webcredentials": {
+     "apps": [
+       "JEBPX7GX5C.net.robertdev.fadeflow"
+     ]
+   }
+ }

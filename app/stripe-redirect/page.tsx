@@ -13,6 +13,8 @@ export default function ReturnUrl() {
     }
    }, [url])
   return (
-    <div>redirecting</div>
+    <div className='flex-1 justify-center items-center h-full w-full'>
+      <p className='text-2xl font-serif'>Redirecting</p>
+    </div>
   )
 }

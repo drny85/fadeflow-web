@@ -11,12 +11,13 @@ export default function DownloadLinks() {
             Download the App Now!
          </h2>
          <p className="text-gray-100 mt-4 text-sm">
-            Download FadeGow app now. Available on both iOS and Android.
+            Download FadeFlow app now. Available on both iOS and Android.
          </p>
          <div className="mt-8 items-center justify-center space-x-8 flex h-40">
             {deviceType === 'android' && (
                <a href="https://play.google.com/store/apps/details?id=net.robertdev.moyabarber">
-                  <img src="/images/google.png" alt="Get it on Google Play" />
+                  <img src="/images/google.png" alt="Get it on Google Play"  
+                     className="h-16" />
                </a>
             )}
             {deviceType === 'iphone' && (
@@ -24,7 +25,7 @@ export default function DownloadLinks() {
                   <img
                      src="/images/apple.png"
                      alt="Download on the App Store"
-                     className=""
+                     className="h-16"
                   />
                </a>
             )}

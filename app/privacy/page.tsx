@@ -18,7 +18,7 @@ const PrivacyPolicy = () => {
                Effective Date: <strong>09/31/2024</strong>
             </p>
             <p className="mb-4">
-               Thank you for choosing Moya Barber! We are committed to
+               Thank you for choosing FadeFlow! We are committed to
                protecting your privacy and ensuring the security of your
                personal information. This Privacy Policy explains how we
                collect, use, and share information when you use our barber
@@ -35,7 +35,7 @@ const PrivacyPolicy = () => {
             <ul className="list-disc list-inside mb-4">
                <li>
                   <strong>Personal Information:</strong> Name, email, phone
-                  number, payment information, profile picture.
+                  number, profile picture.
                </li>
                <li>
                   <strong>Location Information:</strong> Your location to show

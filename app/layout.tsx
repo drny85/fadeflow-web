@@ -1,6 +1,9 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -18,12 +21,18 @@ export const metadata: Metadata = {
   description: "FadeFlow is your ultimate barber booking app, offering seamless appointments, personalized grooming services, and a curated selection of top barbers. Experience easy scheduling, exclusive offers, and a tailored grooming experience at your fingertips. Join FadeFlow today and elevate your style effortlessly!",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
+ 
   return (
+    <ClerkProvider>
+  
     <html lang="en">
       <head>
      
@@ -39,8 +48,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+      
         {children}
+      
       </body>
     </html>
+    </ClerkProvider>
+  
   );
 }

@@ -1,8 +1,8 @@
 // pages/privacy-policy.tsx
 
-import React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
+import React from 'react'
+import Head from 'next/head'
+import Link from 'next/link'
 
 const PrivacyPolicy = () => {
    return (
@@ -18,11 +18,10 @@ const PrivacyPolicy = () => {
                Effective Date: <strong>09/31/2024</strong>
             </p>
             <p className="mb-4">
-               Thank you for choosing FadeFlow! We are committed to
-               protecting your privacy and ensuring the security of your
-               personal information. This Privacy Policy explains how we
-               collect, use, and share information when you use our barber
-               booking app.
+               Thank you for choosing FadeFlow! We are committed to protecting
+               your privacy and ensuring the security of your personal
+               information. This Privacy Policy explains how we collect, use,
+               and share information when you use our barber booking app.
             </p>
 
             <h2 className="text-2xl font-semibold mb-4">
@@ -142,7 +141,7 @@ const PrivacyPolicy = () => {
             </p>
          </div>
       </div>
-   );
-};
+   )
+}
 
-export default PrivacyPolicy;
+export default PrivacyPolicy

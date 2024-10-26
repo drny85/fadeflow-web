@@ -1,9 +1,6 @@
-import type { Metadata } from 'next'
+import { ThemeProvider } from '@/providers/ThemeProvider'
 import localFont from 'next/font/local'
 import './globals.css'
-import { FirebaseAuthProvider } from '@/providers/FirebaseAuthProvider'
-import { ThemeProvider } from '@/providers/ThemeProvider'
-import { SessionProvider } from 'next-auth/react'
 
 const geistSans = localFont({
    src: './fonts/GeistVF.woff',
@@ -23,49 +20,29 @@ const geistMono = localFont({
 // }
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
    return (
-      <SessionProvider>
-         <FirebaseAuthProvider>
-            <ThemeProvider
-               attribute="class"
-               defaultTheme="system"
-               enableSystem
-               disableTransitionOnChange
-            >
-               <html lang="en">
-                  <head>
-                     <meta
-                        name="apple-itunes-app"
-                        content="app-id=6711330027"
-                     />
+      <html lang="en">
+         <head>
+            <meta name="apple-itunes-app" content="app-id=6711330027" />
 
-                     <meta
-                        property="og:title"
-                        content="FadeFlow - Barber Booking App"
-                     />
-                     <meta
-                        property="og:description"
-                        content="Find and book barbers effortlessly with FadeFlow. Schedule haircuts, explore grooming services, and stay fresh."
-                     />
-                     <meta
-                        name="keywords"
-                        content="barber, barbershop, haircut, booking app, barbers appointment, barberia, barbero, fade, men's grooming, FadeFlow, barber booking app"
-                     />
-                     <meta property="og:image" content="/images/banner.png" />
-                     <meta
-                        property="og:url"
-                        content="https://fadeflow.vercel.app"
-                     />
-                  </head>
+            <meta property="og:title" content="FadeFlow - Barber Booking App" />
+            <meta
+               property="og:description"
+               content="Find and book barbers effortlessly with FadeFlow. Schedule haircuts, explore grooming services, and stay fresh."
+            />
+            <meta
+               name="keywords"
+               content="barber, barbershop, haircut, booking app, barbers appointment, barberia, barbero, fade, men's grooming, FadeFlow, barber booking app"
+            />
+            <meta property="og:image" content="/images/banner.png" />
+            <meta property="og:url" content="https://fadeflow.vercel.app" />
+         </head>
 
-                  <body
-                     className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-                  >
-                     {children}
-                  </body>
-               </html>
-            </ThemeProvider>
-         </FirebaseAuthProvider>
-      </SessionProvider>
+         <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+         >
+            {children}
+         </body>
+      </html>
    )
 }
 

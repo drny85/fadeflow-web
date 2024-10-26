@@ -23,7 +23,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
          <head>
             <meta name="apple-itunes-app" content="app-id=6711330027" />
 
-            <meta property="og:title" content="FadeFlow - Barber Booking App" />
+            <meta property="og:title" content="FadeFlow | Barber Booking App" />
             <meta
                property="og:description"
                content="Find and book barbers effortlessly with FadeFlow. Schedule haircuts, explore grooming services, and stay fresh."

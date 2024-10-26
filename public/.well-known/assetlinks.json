@@ -1,12 +1,15 @@
 [
    {
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-         "namespace": "android_app",
-         "package_name": "net.robertdev.fadeflow",
-         "sha256_cert_fingerprints": [
-            "E9:A5:43:15:6D:60:98:5F:1A:44:C2:B9:E7:76:5F:18:8A:4B:E5:82:8D:3E:D4:FB:CE:80:36:F8:46:D3:C9:50"
-         ]
-      }
+     "relation": [
+       "delegate_permission/common.handle_all_urls"
+     ],
+     "target": {
+       "namespace": "android_app",
+       "package_name": "net.robertdev.fadeflow",
+       "sha256_cert_fingerprints": [
+         "E9:A5:43:15:6D:60:98:5F:1A:44:C2:B9:E7:76:5F:18:8A:4B:E5:82:8D:3E:D4:FB:CE:80:36:F8:46:D3:C9:50",
+         "5E:D0:48:33:1E:C9:E3:57:DC:72:83:42:B5:43:AD:39:1B:60:31:BF:0C:09:51:57:FA:C9:0F:BA:AF:2F:DB:8A"
+       ]
+     }
    }
-]
+ ]

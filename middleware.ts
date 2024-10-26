@@ -1,36 +1,32 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
+import NextAuth from 'next-auth'
 import { NextResponse } from 'next/server'
-import admin, { verifyIdToken } from './lib/admin'
-import { getIdToken , getAuth} from 'firebase/auth'
+import authConfig from '@/auth.config'
 
-const isPublicRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)', '/', '/barbers/:path*', '/privacy', '/stripe-redirect'])
+const { auth } = NextAuth(authConfig)
+export default auth((req) => {
+   // Your custom middleware logic goes here
+   console.log('middleware', req.auth, req.nextUrl.pathname)
+   if (!req.url.includes('/dashboard')) {
+      return NextResponse.next()
+   }
+   if (!req.auth && req.nextUrl.pathname !== '/signin') {
+      const newUrl = new URL('/api/auth/signin', req.nextUrl.origin)
+      newUrl.searchParams.set('callbackUrl', req.nextUrl.pathname)
+      return NextResponse.redirect(newUrl)
+   }
 
-export default clerkMiddleware((auth, request) => {
-    const url = request.cookies.get('__session')
-    console.log("MIDDLEWARE +>", url?.value)
- 
-  
-    if (request.url.includes('/dashboard')) {
-        const session = auth().userId
-      
-       
-        if (!session) {
-            auth().protect()
-            // url.pathname = '/sign-in'
-            // return NextResponse.redirect(url)
-        }
-       
-       // return NextResponse.next()
-    } 
- 
+   // if (req.auth && req.auth.user?.email !== 'robertm3lendez@gmail.com') {
+   //    const newUrl = new URL('/api/auth/signin', req.nextUrl.origin)
+   //    newUrl.searchParams.set('callbackUrl', req.nextUrl.pathname)
+   //    return NextResponse.redirect(newUrl)
+   // }
+
+   if (req.auth && req.nextUrl.pathname === '/signin') {
+      const newUrl = new URL('/dashboard', req.nextUrl.origin)
+      return NextResponse.redirect(newUrl)
+   }
 })
 
 export const config = {
-  matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
-    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-    // Always run for API routes
-    '/(api|trpc)(.*)',
-    '/dashboard/:path*'
-  ],
+   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
 }

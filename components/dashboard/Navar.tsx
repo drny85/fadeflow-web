@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeToggle } from '../ThemeToggle'
-import { SignOutButton } from '@clerk/nextjs'
+
 import Link from 'next/link'
 
 export default function Navar() {
@@ -17,7 +17,6 @@ export default function Navar() {
          </div>
          <div className="flex items-center gap-x-4">
             <ThemeToggle />
-            <SignOutButton redirectUrl="/" />
          </div>
       </header>
    )

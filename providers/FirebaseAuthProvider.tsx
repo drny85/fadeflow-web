@@ -1,66 +1,87 @@
 'use client'
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { onAuthStateChanged, signInWithEmailAndPassword, User } from 'firebase/auth';
-import { auth } from '@/firebase';
-
+import {
+   createContext,
+   useContext,
+   useEffect,
+   useState,
+   ReactNode
+} from 'react'
+import {
+   onAuthStateChanged,
+   signInWithEmailAndPassword,
+   User
+} from 'firebase/auth'
+import { auth } from '@/firebase'
 
 // Define the shape of the AuthContext
 interface AuthContextType {
-  user: User | null;
-  loading: boolean;
-  login: (email: string, password: string) => Promise<User | null>;
+   user: User | null
+   loading: boolean
+   logOut: () => Promise<void>
+   login: (email: string, password: string) => Promise<User | null>
 }
 
 // Create the context with a default value
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 // FirebaseAuthProvider component
 export const FirebaseAuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+   const [user, setUser] = useState<User | null>(null)
 
-  useEffect(() => {
-    // Listen for authentication state changes
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-      setLoading(false);
-    });
+   const [loading, setLoading] = useState(true)
 
-    // Cleanup the listener on unmount
-    return () => unsubscribe();
-  }, []);
+   useEffect(() => {
+      // Listen for authentication state changes
+      const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+         setUser(firebaseUser)
+         setLoading(false)
+      })
 
-  // Login function
-  const login = async (email: string, password: string):Promise<User | null> => {
-    try {
-   const {user} = await signInWithEmailAndPassword(auth, email, password);
-   return user;
-    } catch (error) {
-      console.error('Login error:', error);
-     return null
-    }
-  };
+      // Cleanup the listener on unmount
+      return () => unsubscribe()
+   }, [])
 
-  const authContextValue: AuthContextType = {
-    user,
-   loading,
-    login,
-  };
- 
+   // Login function
+   const login = async (
+      email: string,
+      password: string
+   ): Promise<User | null> => {
+      try {
+         const { user } = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+         )
+         return user
+      } catch (error) {
+         console.log('Login error:', error)
+         return null
+      }
+   }
 
-  return (
-    <AuthContext.Provider value={authContextValue}>
-      {!loading && children}
-    </AuthContext.Provider>
-  );
-};
+   const logOut = async () => {
+      // signOut({ redirectTo: '/' })
+   }
+
+   const authContextValue: AuthContextType = {
+      user,
+      loading,
+      login,
+      logOut
+   }
+
+   return (
+      <AuthContext.Provider value={authContextValue}>
+         {!loading && children}
+      </AuthContext.Provider>
+   )
+}
 
 // Custom hook for using the Firebase Auth context
 export const useAuth = () => {
-    const context = useContext(AuthContext)
-    if (context === undefined) {
-       throw new Error('useAuth must be used within an AuthProvider')
-    }
-    return context
- }
- 
+   const context = useContext(AuthContext)
+   if (context === undefined) {
+      throw new Error('useAuth must be used within an AuthProvider')
+   }
+   return context
+}

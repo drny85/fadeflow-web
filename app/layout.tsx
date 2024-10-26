@@ -1,4 +1,3 @@
-import { ThemeProvider } from '@/providers/ThemeProvider'
 import localFont from 'next/font/local'
 import './globals.css'
 

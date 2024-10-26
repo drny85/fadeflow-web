@@ -9,14 +9,7 @@ const firebaseConfig = {
    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
-   // }
-   //    apiKey: 'AIzaSyCY1y2rhxZ8MIbH9Y8ttuLO8DujrM1l-HQ',
-   //    authDomain: 'fadeflow-7d31b.firebaseapp.com',
-   //    projectId: 'fadeflow-7d31b',
-   //    storageBucket: 'fadeflow-7d31b.appspot.com',
-   //    messagingSenderId: '684619283478',
-   //    appId: '1:684619283478:web:98059a7cb6eb01bbf30937',
-   //    measurementId: 'G-SV0LN6TMQF'
+ 
 }
 
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp()

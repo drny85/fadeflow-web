@@ -1,4 +1,5 @@
 'use client'
+import AppChecker from '@/components/AppChecker'
 import { useEffect } from 'react'
 
 export default function DeepLinking() {
@@ -17,7 +18,7 @@ export default function DeepLinking() {
       }
    }, [])
 
-   return null
+   return <AppChecker />
 }
 
 function getUrlSubstringAfterEquals(url: string): string {

@@ -1,3 +1,4 @@
+import AppChecker from '@/components/AppChecker'
 import DownloadLinks from '@/components/DownloadLinks'
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
             className="w-full h-full object-fill overflow-hidden"
          />
          <DownloadLinks />
+         {/* <AppChecker /> */}
       </main>
    )
 }

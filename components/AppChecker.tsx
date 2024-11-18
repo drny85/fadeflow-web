@@ -34,7 +34,7 @@ const AppChecker = () => {
          {appInstalled ? (
             <h1 className="text-2xl font-bold text-green-500">App Detected</h1>
          ) : (
-            <h1 className="text-2xl font-bold text-red-500">
+            <h1 className="text-xl font-bold text-red-500">
                Checking for App...
             </h1>
          )}
